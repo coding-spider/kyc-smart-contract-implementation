@@ -12,3 +12,6 @@ node_modules
 
 # Ignore user config files of Jet Brains
 .idea
+
+#Ignoring build folder
+build

@@ -68,14 +68,14 @@ contract kyc {
 
     // Get Bank Name
     // Can be called by Customer and Admin
-    function getBankName(address _ethAddress) external returns (string memory) {
+    function getBankName(address _ethAddress) external view returns (string memory) {
         require(banks[_ethAddress].ethAddress != address(0), "Bank is not registered!");
         return banks[_ethAddress].bankName;
     }
 
     // Get Bank Rating
     // Can be called by Customer and Admin
-    function getBankRating(address _ethAddress) external returns (uint32 memory) {
+    function getBankRating(address _ethAddress) external view returns (uint32) {
         require(banks[_ethAddress].ethAddress != address(0), "Bank is not registered!");
         return banks[_ethAddress].rating;
     }
@@ -98,18 +98,18 @@ contract kyc {
     * Customer/Blockchain Interface
     * */
     function setCustomerPassword(string calldata _userName, string calldata _password) external returns (bool) {
-        require(customers[_userName] != 0, "Customer not found!");
+        require(bytes(customers[_userName].userName).length != 0, "Customer not found!");
         customers[_userName].password = _password;
         return true;
     }
 
-    function viewCustomerData(string calldata _userName) external returns (string memory) {
-        require(customers[_userName] != 0, "Customer not found!");
+    function viewCustomerData(string calldata _userName) external view returns (string memory) {
+        require(bytes(customers[_userName].userName).length != 0, "Customer not found!");
         return customers[_userName].customerData;
     }
 
-    function getCustomerRating(string calldata _userName) external returns (uint32 memory) {
-        require(customers[_userName] != 0, "Customer not found!");
+    function getCustomerRating(string calldata _userName) external view returns (uint32) {
+        require(bytes(customers[_userName].userName).length != 0, "Customer not found!");
         return customers[_userName].rating;
     }
 
