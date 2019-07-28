@@ -49,7 +49,7 @@ contract kyc {
     * */
 
     // Add Bank
-    function addBank(string calldata _bankName, address _ethAddress, string calldata _regNumber) external adminOnly returns (bool) {
+    function addBank(string calldata _bankName, address _ethAddress, string calldata _regNumber) external payable adminOnly returns (bool) {
         require(banks[_ethAddress].ethAddress == address(0), "This bank is already registered!");
         banks[_ethAddress].bankName = _bankName;
         banks[_ethAddress].ethAddress = _ethAddress;
@@ -131,6 +131,7 @@ contract kyc {
     //Add Customer
     function addCustomer(string calldata _userName, string calldata _customerData) external returns (uint8) {
         require(bytes(customers[_userName].userName).length == 0, "Customer already exists in system!");
+        require(banks[msg.sender].ethAddress != address(0), "Bank not registered.");
         customers[_userName].userName = _userName;
         customers[_userName].customerData = _customerData;
         customers[_userName].firstBank = msg.sender;
@@ -200,6 +201,5 @@ contract kyc {
         require(msg.sender == admin);
         _;
     }
-
 
 }
