@@ -1,0 +1,9 @@
+- Inside remix IDE, create a new file name kyc.sol Compile it
+- Go to Deploy and Run Transactions Screen, Select the Smart Contract to deploy (In thus case 'kyc')
+- Set Gas Limit to 5500000 and click deploy
+- Under the deployed contract sections you will find all the functions written in the kyc.sol file
+- Create some sample banks (Using addBank function)
+- Create some sample Customers (Using addCustomer function)
+- Create KYC Request for the customer (Using addRequest function)
+- You can view all the KYC Requests for a particular Bank using getKYCRequests function
+
