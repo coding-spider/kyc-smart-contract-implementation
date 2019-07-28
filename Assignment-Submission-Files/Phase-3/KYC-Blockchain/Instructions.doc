@@ -1,0 +1,9 @@
+ - Starting the blockchain
+    - Start th blockchain  {geth --datadir ./datadir init init.json}
+    - Start a console to connect to created bliockchain (geth --datadir ./datadir --networkid 2019 console 2>>eth.log)
+    - Inside this create some sample accounts using (personal.addAccount('rohan'))
+
+ - Deploying the Smart Contract to the blockchain network
+    - cd to the Smart Contract directory
+    - do `truffle compile`
+    - do `truffle migrate` which deployed the smart contract to the blockchain
